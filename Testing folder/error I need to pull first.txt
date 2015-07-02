@@ -1,3 +1,7 @@
 error I need to pull first
 
+<<<<<<< HEAD
 yes you do.
+=======
+No I dont.
+>>>>>>> 98f1f03388fe0d05c74c930dca9da6658923eee5
