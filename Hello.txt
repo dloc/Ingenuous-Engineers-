@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+=======
+This is Viv's change.
+This is John's change.
+>>>>>>> 198076290667c22ffc6473863d9b04691b8d2f8c
