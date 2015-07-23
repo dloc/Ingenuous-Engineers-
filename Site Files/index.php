@@ -1,12 +1,25 @@
 <?php
 // Include header
 include 'header.php';
+include 'init.php';
 ?>
+<!DOCTYPE html>
+<html lang="en">
 
 <!-- Put your page content here! -->
 <div class="jumbotron">
      <img src="Photos/Logo1.jpg" class="img-responsive" >
-    <p>Our travel destinations are out of this world.<br><br>Visit Jupiter and be the first to see all the natural beauty the gas giant has to offer.</p>
+    <p>Our travel destinations are out of this world.<br><br>Visit Jupiter and be the first to see all the natural beauty the gas giant has to offer.<br>
+<body>
+
+<div align="center">   
+<h3>Login Form</h3>
+<form action="" method="POST" >
+<h3>Username: </h3> <input type="text" name="user" ><br />
+<h3>Password: </h3> <input type="password" name="pass"><br />	
+<input type="submit" value="Login" name="submit" class="btn btn-primary" role="button"   />
+</form>
+</div>    
 </div>
     
    <div class="row">
@@ -70,8 +83,10 @@ include 'header.php';
       </div>
    </div>
 </div>
-
+</body>
 <?php
 // Include footer
 include 'footer.php';
 ?>
+            </head>
+
