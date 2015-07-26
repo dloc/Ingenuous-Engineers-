@@ -241,7 +241,7 @@ th {
     page-break-after: avoid;
   }
   select {
-    background: #fff !important;
+    background: #000 !important;
   }
   .navbar {
     display: none;
@@ -6586,5 +6586,13 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+.selectpicker
+{
+    background-color: black;
+}
+option { 
+    /* Whatever color  you want */
+    background-color: black;
 }
 /*# sourceMappingURL=bootstrap.css.map */
