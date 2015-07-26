@@ -1,27 +1,29 @@
 <?php
 // Include header
 include 'header.php';
-include 'init.php';
+include('login.php');
+require 'init.php';
+if(isset($_SESSION['login_user'])){
+header("location: profile.php");
+}
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
 <!-- Put your page content here! -->
 <div class="jumbotron">
-     <img src="Photos/Logo1.jpg" class="img-responsive" >
-    <p>Our travel destinations are out of this world.<br><br>Visit Jupiter and be the first to see all the natural beauty the gas giant has to offer.<br>
-<body>
-
-<div align="center">   
-<h3>Login Form</h3>
-<form action="" method="POST" >
-<h3>Username: </h3> <input type="text" name="user" ><br />
-<h3>Password: </h3> <input type="password" name="pass"><br />	
-<input type="submit" value="Login" name="submit" class="btn btn-primary" role="button"   />
-</form>
-</div>    
+    <img src="Photos/Logo1.jpg" class="img-responsive" >
+    <div align="center" style="padding-top: 3%;" >   
+        <h3>Login<span> or <a href="register.php">Register Here</a></span></h3>
+        <form action="" method="post" >
+            <h3 style="margin-bottom: 0;">Email: </h3><span><input type="text" style="width: 10em; font-size: 0.75em;" name="email" id="email" placeholder="you@email.com"></span><br>
+            <h3 style="margin-bottom: 0;">Password: </h3><span><input id="password" type="password" style="width: 10em; font-size: 0.75em;" name="password"></span><br>	
+        <input type="submit" value="Login" name="submit" class="btn btn-primary" style="margin-top: 1%" role="button" ><br>            
+            <span><?php echo $error; ?></span>
+        </form>
+    </div>
+    <p style="padding-top: 4%;">Our travel destinations are out of this world.<br><br>Visit Jupiter and be the first to see all the natural beauty the gas giant has to offer.</p>
 </div>
-    
+
+
    <div class="row">
    <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
@@ -83,10 +85,8 @@ include 'init.php';
       </div>
    </div>
 </div>
-</body>
+
 <?php
 // Include footer
 include 'footer.php';
 ?>
-            </head>
-

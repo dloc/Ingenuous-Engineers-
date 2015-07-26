@@ -1,4 +1,5 @@
 <?php
+//include_once('session.php');
 // This is the header for every page.
 // It starts with all the appropriate HTML headings
 // and ends with the navigation bar.
@@ -50,7 +51,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><img width=120px height=35px alt="logo" align="left" src="Photos/LogoMini.jpg"></a>
+<!--                <a href="register.php" class="btn btn-primary" role="button">Register</a>-->
+                <a class="navbar-brand" href="index.php"><img width=120px height=35px alt="logo"  src="Photos/LogoMini.jpg"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -58,11 +60,12 @@
                     <li>
                         <a href="about.php" <?php if($currentPage == 'about.php') { echo 'id="here"'; } ?>>about</a>
                     </li>
-                     <li>
-                    <a href="reviews.php" <?php if($currentPage == 'reviews.php') { echo 'id="here"'; } ?>>reviews</a>
-                       </li> <li>
-                    <a href="booking.php" <?php if($currentPage == 'booking.php') { echo 'id="here"'; } ?>>booking</a>
-                       </li>
+                    <li>
+                        <a href="reviews.php" <?php if($currentPage == 'reviews.php') { echo 'id="here"'; } ?>>reviews</a>
+                    </li>
+                    <li>
+                        <a href="booking.php" <?php if($currentPage == 'booking.php') { echo 'id="here"'; } ?>>booking</a>
+                    </li>
                     <li id="dropdown">
                         <a href="attractions.php" <?php if($currentPage == 'attractions.php' || $currentPage == 'beaches.php' || $currentPage == 'moons.php' || $currentPage == 'night-life.php' || $currentPage == 'stadium.php' || $currentPage == 'storm.php' || $currentPage == 'zoo.php') { echo 'id="here"'; } ?>>attractions</a>
                         <ul class="dropdown-menu">
@@ -87,24 +90,18 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="specials.php" <?php if($currentPage == 'specials.php') { echo 'id="here"'; } ?>>specials</a>
-                    </li>
-                   
-                    <li>
                         <a href="contact.php" <?php if($currentPage == 'contact.php') { echo 'id="here"'; } ?>>contact</a>
                     </li>
                     <li>
-                        <a href="login.php" <?php if($currentPage == 'login.php') { echo 'id="here"'; } ?>>login</a>
+                         <?php if(isset($login_session)) : ?>
+               <a href="logout.php"> <font color="#337ab7">Log Out</font></a>
+                <?php endif; ?>
                     </li>
-                    <li>
-                        <a href="register.php" <?php if($currentPage == 'register.php') { echo 'id="here"'; } ?>>register</a>
-                    </li>
-        
-                    
                 </ul>
-                
-          
-                
+                    <p align="right" style="padding-top: .2em"><?php echo $login_session2; ?></p>        
+               
+                          
+            
             </div>
             <!-- /.navbar-collapse -->
         </div>

@@ -1,13 +1,38 @@
-<?php include 'header.php'; ?>
 
-<!-- Include HTML here -->
-<div style="text-align: center; padding-top: 10%; padding-bottom: 10%;"><div align="center">   
-<h3>Login Form</h3>
-<form action="" method="POST" >
-<h3>Username: </h3> <input type="text" name="user" ><br />
-<h3>Password: </h3> <input type="password" name="pass"><br />	
-<input type="submit" value="Login" name="submit" class="btn btn-primary" role="button"   />
-</form>
-</div>    </div>
 
-<?php include 'footer.php'; ?>
+<?php
+session_start(); // Starting Session
+$error=''; // Variable To Store Error Message
+    if (isset($_POST['submit'])) {
+        if (empty($_POST['email']) || empty($_POST['password'])) {
+        $error = "1Email or Password is invalid";
+        }
+        else
+        {
+            // Define $username and $password            
+            $email=$_POST['email'];
+            $password=$_POST['password'];
+            $password=htmlspecialchars(md5($password));
+            // Establishing Connection with Server by passing server_name, user_id and password as a parameter
+            $connection = mysql_connect("localhost", "vlang", "F@ntastic0!");
+            // To protect MySQL injection for Security purpose
+           // $email = stripslashes($email);
+           // $password = stripslashes($password);
+           // $email = mysql_real_escape_string($email);
+           // $password = mysql_real_escape_string($password);
+            // Selecting Database
+            $db = mysql_select_db("vlang", $connection);
+            // SQL query to fetch information of registerd users and finds user match.
+            $query = mysql_query("select * from gj_users where password='$password' AND email='$email'", $connection);
+            $rows = mysql_num_rows($query);
+            if ($rows == 1) {
+            $_SESSION['login_user']=$email; // Initializing Session
+            header("location: profile.php"); // Redirecting To Other Page
+            } else {
+            $error = "2email or Password is invalid";
+            }
+            mysql_close($connection); // Closing Connection
+        }
+    }
+?>
+
