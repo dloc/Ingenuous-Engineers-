@@ -1,6 +1,5 @@
-<?php 
+<?php
 include 'header.php';
-require 'init.php';
 
 $firstName = $lastName = $email = $pass1 = $pass2 = "";
 
@@ -15,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // User will receive error message if password is not at least 4 characters long.
 // Users will be prompted to go back and re-enter an appropriate password.
 if (strlen($pass1) < 4 || strlen($pass2) < 4) { ?>
-            <div style='text-align:center; font-size:14pt; padding-top: 5%;'>Your password must be at least 4 characters long.<br>Please go back and re-enter.<br><a href='register.php' style='font-size:12pt' onClick='history.back();return false;'>GO BACK</a></div>
+            <div style='text-align:center; font-size:14pt; padding-top: 5%;'>Your password must be at least 4 characters long.<br>Please go back and re-enter.<br><a href='signup.php' style='font-size:12pt' onClick='history.back();return false;'>GO BACK</a></div>
 <?php }
 
 // Checks to make sure that First and Last Names contain only letters.

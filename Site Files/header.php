@@ -1,8 +1,8 @@
 <?php
-//include_once('session.php');
 // This is the header for every page.
 // It starts with all the appropriate HTML headings
 // and ends with the navigation bar.
+include 'init.php';
 ?>
 
 <!DOCTYPE html>
@@ -92,16 +92,11 @@
                     <li>
                         <a href="contact.php" <?php if($currentPage == 'contact.php') { echo 'id="here"'; } ?>>contact</a>
                     </li>
-                    <li>
-                         <?php if(isset($login_session)) : ?>
-               <a href="logout.php"> <font color="#337ab7">Log Out</font></a>
-                <?php endif; ?>
-                    </li>
                 </ul>
-                    <p align="right" style="padding-top: .2em"><?php echo $login_session2; ?></p>        
-               
-                          
-            
+                <?php if(logged_in() && $currentPage != 'logout.php') { ?>
+                    <p align="right" style="padding-top: .2em">Hello, <?php echo $_SESSION['firstName']; ?>
+                        <span><a href="logout.php"> <font color="#337ab7">Log Out</font></a></span></p>
+                <?php } ?>
             </div>
             <!-- /.navbar-collapse -->
         </div>
