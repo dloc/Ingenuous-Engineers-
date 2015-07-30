@@ -1,9 +1,5 @@
-<?php
-// Include header
-include 'header.php';
-include('login.php');
-require 'init.php';
-if(isset($_SESSION['login_user'])){
+<?php include 'header.php';
+if(isset($_SESSION['userID'])){
 header("location: profile.php");
 }
 ?>
@@ -13,11 +9,10 @@ header("location: profile.php");
     <img src="Photos/Logo1.jpg" class="img-responsive" >
     <div align="center" style="padding-top: 3%;" >   
         <h3>Login<span> or <a href="register.php">Register Here</a></span></h3>
-        <form action="" method="post" >
-            <h3 style="margin-bottom: 0;">Email: </h3><span><input type="text" style="width: 10em; font-size: 0.75em;" name="email" id="email" placeholder="you@email.com"></span><br>
-            <h3 style="margin-bottom: 0;">Password: </h3><span><input id="password" type="password" style="width: 10em; font-size: 0.75em;" name="password"></span><br>	
-        <input type="submit" value="Login" name="submit" class="btn btn-primary" style="margin-top: 1%" role="button" ><br>            
-            <span><?php echo $error; ?></span>
+        <form method="POST" >
+            <h3 style="margin-bottom: 0;">Email: </h3><span><input type="text" style="width: 10em; font-size: 0.75em;" name="email" placeholder="you@email.com"></span><br>
+            <h3 style="margin-bottom: 0;">Password: </h3><span><input type="password" style="width: 10em; font-size: 0.75em;" name="password"></span><br>	
+        <input type="submit" value="Login" name="submit" class="btn btn-primary" style="margin-top: 1%" role="button" />
         </form>
     </div>
     <p style="padding-top: 4%;">Our travel destinations are out of this world.<br><br>Visit Jupiter and be the first to see all the natural beauty the gas giant has to offer.</p>
@@ -25,7 +20,7 @@ header("location: profile.php");
 
 
    <div class="row">
-   <div class="col-sm-6 col-md-3">
+   <div class="col-sx-6 col-md-3">
       <div class="thumbnail">
           <a href="zoo.php"><img src="Photos/zoo.jpg" alt="Generic placeholder thumbnail"></a>
       </div>
@@ -39,7 +34,7 @@ header("location: profile.php");
          </p>
       </div>
    </div>
-   <div class="col-sm-6 col-md-3">
+   <div class="col-sx-6 col-md-3">
       <div class="thumbnail">
           <a href="night-life.php">
               <img src="Photos/locals2.jpg" alt="Generic placeholder thumbnail"></a>
@@ -54,7 +49,7 @@ header("location: profile.php");
          </p>
       </div>
    </div>
-   <div class="col-sm-6 col-md-3">
+   <div class="col-sx-6 col-md-3">
       <div class="thumbnail">
          <a href="storm.php"><img src="Photos/storm.jpg" alt="storm photo"></a>
       </div>
@@ -69,7 +64,7 @@ header("location: profile.php");
          </p>
       </div>
    </div>
-   <div class="col-sm-6 col-md-3">
+   <div class="col-sx-6 col-md-3">
       <div class="thumbnail">
           <a href="moons.php"><img src="Photos/europa2.jpg" alt="Generic placeholder thumbnail"></a>
       </div>

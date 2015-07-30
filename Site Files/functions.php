@@ -44,6 +44,68 @@ function register_user($register_data) {
     $stmt->execute();
 }
 
+
+/*********************/
+/* BOOKING FUNCTIONS */
+/*********************/
+// Register and sanitize user info
+function book_trip($booking_data) {
+	$fields = implode(', ', array_keys($booking_data));
+	$placeholders = ':' . implode(', :', array_keys($booking_data));
+
+    foreach ($booking_data as $key => $val) {
+        $booking_data[':'.$key] = $val;
+        unset($booking_data[$key]);
+    }
+	//insert the array of info into server table gj_users
+	$stmt = $GLOBALS['gjdb']->prepare("INSERT INTO gj_booking ($fields) VALUES ($placeholders)");
+    foreach($booking_data as $key=>&$value) {
+        $stmt->bindParam($key, $value, PDO::PARAM_STR);
+    }
+    $stmt->execute();
+}
+
+
+/********************/
+/*    LOGIN USER    */
+/********************/
+// Register and sanitize user info
+function login_user($email, $password) {
+	$stmt = $GLOBALS['gjdb']->prepare("SELECT * FROM gj_users WHERE email = :email AND password = :password");
+    $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+    $stmt->bindParam(":password", $password, PDO::PARAM_STR);
+    $stmt->execute();
+    
+    return $login_data = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+/********************/
+/* REVIEW FUNCTIONS */
+/********************/
+function submit_review($review_data) {
+    $fields = implode(', ', array_keys($review_data));
+	$placeholders = ':' . implode(', :', array_keys($review_data));
+
+    foreach ($review_data as $key => $val) {
+        $review_data[':'.$key] = $val;
+        unset($review_data[$key]);
+    }
+	//insert the array of info into server table gj_users
+	$stmt = $GLOBALS['gjdb']->prepare("INSERT INTO gj_reviews ($fields) VALUES ($placeholders)");
+    foreach($review_data as $key=>&$value) {
+        $stmt->bindParam($key, $value, PDO::PARAM_STR);
+    }
+    $stmt->execute();
+}
+
+function get_reviews() {
+    $stmt = $GLOBALS['gjdb']->prepare("SELECT * FROM gj_reviews");
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+
 /*********************/
 /* GENERAL FUNCTIONS */
 /*********************/
@@ -53,57 +115,23 @@ function logged_in() {
     return(isset($_SESSION['userID'])) ? true : false;
 }
 
-/*******************/
-/* USER FUNCTIONS */
-/*******************/
 
-//checks if user exists
-function user_exists($email){
-    $email = sanitize($email);
-		
-    $query = mysql_query("SELECT `user_id` FROM `gj_users` WHERE `email` = '$email'");
-		
-    //return if user was found else return false
-    return (mysql_result($query, 0) == 1) ? true : false;
-}
-
-//get all user info
-function user_data($user_id) {
-    $data = array();
-    $user_id = (int)$user_id;
-		
-    $func_num_args = func_num_args();
-    $func_get_args = func_get_args();
-		
-    if($func_num_args > 1) {
-        unset($func_get_args[0]);
-			
-        $fields = '`' . implode('`, `', $func_get_args ) . '`';
-        $data = mysql_fetch_assoc(mysql_query("SELECT $fields FROM `gj_users` WHERE `userID` = $user_id"));
-			
-        return $data;
+function trip_already_booked() {
+    $user_trip_data = get_trip_data($_SESSION['userID']);
+    //var_dump($user_trip_data);
+    if(!empty($user_trip_data)) { 
+        $_SESSION['date'] = $user_trip_data['date'];
+        return true;
     }
+    else return false;
 }
 
-function login($email, $password) {
-    $user_id = user_id_from_email($email);
-    $email = sanitize($email);
-		
-    // encrypt/convert password to match server md5 encryption
-    $password = md5($password);
-		
-    // return true/user_id if username and password match with one on file
-    return (mysql_result(mysql_query("SELECT `userID` FROM `gj_users` WHERE `email` = '$email' AND `password` = '$password'" ), 0) == 1) ? $user_id : false;
-}
-
-//check if user is active
-function user_active($email) {
-    $email = sanitize($email);
-		
-    $query = mysql_query("SELECT `userID` FROM `gj_users` WHERE `email` = '$email' AND `active` = 1");
-		
-    //return true if user activated acct
-    return (mysql_result($query, 0) == 1) ? true : false;
+function get_trip_data($userID) {
+    $stmt = $GLOBALS['gjdb']->prepare("SELECT * FROM gj_booking WHERE userID = :userID");
+    $stmt->bindParam(':userID', $userID, PDO::PARAM_STR);
+    $stmt->execute();
+    
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 ?>

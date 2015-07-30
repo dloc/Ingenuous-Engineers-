@@ -44,12 +44,12 @@ body {
 
 .navbar-brand { padding-top: 1%; }
 
-.thumbnail { min-height: 8em; }
+/*.thumbnail { min-height: 8em; }*/
 
 .thumbnail a img {
     width: 100%;
     min-height: 8em;
-    height: 0;
+    height: 240px;
 }
 
 .row {
@@ -62,12 +62,19 @@ body {
     padding-left: 1%;
 }
 
+#container {
+    max-width: 75%;
+    margin: 0 auto;
+}
+
 #copy { font-family: sans-serif; }
 #footer {
     text-align: center;
     font-size: 0.75em;
     padding-top: 3%;
 }
+
+#mydropdown { color: black; }
 
 #dropdown li:hover .sub-menu {
     visibility: visible;
@@ -98,6 +105,7 @@ body {
     color: white;
 }
 
+/*
 @media screen and (max-width: 1200px) {
     .img-responsive { min-width: 100%; }
     .jumbotron p { text-align: center; }
@@ -116,4 +124,4 @@ body {
     .thumbnail a img {
         min-height: 10em !important; 
     }
-}
+}*/
