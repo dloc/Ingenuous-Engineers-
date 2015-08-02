@@ -1,0 +1,165 @@
+/*!
+ * Start Bootstrap - Full HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: black;
+    color: #8E8484;
+    font-size: 3em;
+}
+
+a { color: #82b3eb; }
+a:hover {
+    text-decoration: none;
+    color: white /*#4379b9*/;
+}
+
+.glyphicon { font-family: 'Glyphicons Halflings'; }
+
+.col-lg-12 { padding: 0; }
+
+.btn-primary {
+    background-color: lightgray;
+    border-color: darkgray;
+    color: black;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: darkgray;
+    border-color: black;
+    color: black;
+    font-weight: bold;
+}
+
+/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+
+.full {
+    background: url('Photos/Logo1.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+/* Position GoJupiter logo to right of page. */
+.jumbotron {
+    padding-top: 0;
+    padding-bottom: 2%;
+    margin-bottom: 0;
+    background-color: black;
+    display: block;
+    overflow: hidden;
+}
+
+.jumbotron p {
+    color: white;
+    padding: 10% 5% 5% 5%;
+    font-size: 1em;
+}
+
+.img-responsive {
+    float: right;
+    max-width: 60%;
+}
+
+#img-portfolio {
+    padding: 3% 5% 5% 0;
+    width: 100%;
+    border-radius: 50px;
+}
+
+#portfolio-row {
+    display: inline-block;
+    width: 50%;
+}
+
+.navbar-brand { padding-top: 1%; }
+
+/*.thumbnail { min-height: 8em; }*/
+
+.thumbnail a img {
+    width: 100%;
+    min-height: 8em;
+    height: 240px;
+}
+
+.row {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.col-sm-6, .col-md-3 {
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+#container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding-top: 5%;
+}
+
+#copy { font-family: sans-serif; }
+#footer {
+    text-align: center;
+    font-size: 0.75em;
+    padding-top: 3%;
+}
+
+#mydropdown { color: black; }
+
+#dropdown li:hover .sub-menu {
+    visibility: visible;
+}
+
+#dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    background-color: grey;
+    width: 100%;
+}
+
+.dropdown-menu li a {
+    color: white;
+    font-size: 2em;
+}
+
+.dropdown-menu li a:hover {
+    background-color: transparent;
+    font-weight: bold;
+    color: white;
+}
+
+#here { 
+    font-weight: bold;
+    color: white;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .img-responsive { min-width: 100%; }
+    .jumbotron p { text-align: center; }
+    .thumbnail { min-height: 5em !important; }
+    .thumbnail a img { 
+        min-height: 15em !important;
+        height: 0;
+    }
+    .col-sm-6, .col-md-3 { 
+        min-height: 0;
+        padding-bottom: 10%;
+    }
+    #portfolio-row { width: 100%; }
+    .row { display: inline-block !important; }
+}
+
+@media screen and (max-width: 500px) {
+    .thumbnail a img {
+        min-height: 10em !important; 
+    }
+}
